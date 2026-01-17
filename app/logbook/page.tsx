@@ -23,7 +23,6 @@ import {
   Trash2
 } from 'lucide-react';
 
-// --- Types ---
 interface DiveLog {
   id: string;
   site: string;
@@ -41,7 +40,7 @@ interface DiveLog {
 }
 
 export default function LogbookPage() {
-  // Initial Data
+  
   const initialLogs: DiveLog[] = [
     {
       id: "247",
@@ -104,7 +103,7 @@ export default function LogbookPage() {
     setIsLoaded(true);
   }, []);
 
-  // Sync state to LocalStorage
+  
   useEffect(() => {
     if (isLoaded) {
       localStorage.setItem('dive_logs', JSON.stringify(logs));
@@ -178,7 +177,7 @@ export default function LogbookPage() {
         {stats.map((stat, i) => (
           <div key={i} className={`p-8 rounded-[2.5rem] border transition-all duration-500 shadow-sm ${
             stat.active 
-              ? 'bg-gradient-to-br from-[#004488] to-[#0066AA] border-blue-400 text-white shadow-lg shadow-blue-100 hover:-translate-y-1' 
+              ? 'bg-linear-to-br from-[#004488] to-[#0066AA] border-blue-400 text-white shadow-lg shadow-blue-100 hover:-translate-y-1' 
               : 'bg-white border-slate-100 text-slate-800 hover:border-slate-300'
           }`}>
             <div className="text-3xl font-light mb-1 tracking-tight">{stat.value}</div>
@@ -196,7 +195,7 @@ export default function LogbookPage() {
         </h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {achievements.map((ach, i) => (
-            <div key={i} className="group bg-white p-6 rounded-[2rem] border border-slate-100 shadow-sm flex flex-col items-center text-center hover:shadow-md transition-all">
+            <div key={i} className="group bg-white p-6 rounded-4xl border border-slate-100 shadow-sm flex flex-col items-center text-center hover:shadow-md transition-all">
               <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-300">
                 {ach.icon}
               </div>
@@ -301,7 +300,7 @@ export default function LogbookPage() {
       </div>
 
       {/* Info Banner */}
-      <div className="bg-gradient-to-r from-[#001122] to-[#003366] rounded-[3rem] p-12 flex flex-col md:flex-row gap-10 items-center text-white shadow-2xl shadow-blue-200/50">
+      <div className="bg-linear-to-r from-[#001122] to-[#003366] rounded-[3rem] p-12 flex flex-col md:flex-row gap-10 items-center text-white shadow-2xl shadow-blue-200/50">
         <div className="w-20 h-20 bg-white/10 backdrop-blur-xl rounded-3xl flex items-center justify-center text-blue-300 shrink-0 border border-white/10">
           <ShieldCheck size={40} />
         </div>
@@ -317,7 +316,7 @@ export default function LogbookPage() {
       {/* --- LOG NEW DIVE POPUP --- */}
       {isLogModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-in fade-in duration-300">
-          <div className="bg-white w-full max-w-[600px] rounded-[3rem] shadow-2xl relative overflow-hidden animate-in zoom-in-95 duration-300">
+          <div className="bg-white w-full max-w-150 rounded-[3rem] shadow-2xl relative overflow-hidden animate-in zoom-in-95 duration-300">
             <div className="bg-slate-900 p-10 pb-12 text-white relative">
               <button onClick={() => setIsLogModalOpen(false)} className="absolute top-8 right-8 p-2.5 bg-white/10 hover:bg-white/20 rounded-full transition-colors"><X size={20} /></button>
               <h2 className="text-3xl font-light tracking-tight">Log New Entry</h2>
@@ -363,7 +362,7 @@ export default function LogbookPage() {
       {/* --- VIEW DETAILS POPUP --- */}
       {isDetailModalOpen && selectedDive && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-in fade-in duration-300">
-          <div className="bg-white w-full max-w-[550px] rounded-[3rem] shadow-2xl relative overflow-hidden animate-in zoom-in-95 duration-300">
+          <div className="bg-white w-full max-w-137.5 rounded-[3rem] shadow-2xl relative overflow-hidden animate-in zoom-in-95 duration-300">
             <div className="bg-[#002244] p-10 pb-12 text-white relative">
               <button onClick={() => setIsDetailModalOpen(false)} className="absolute top-8 right-8 p-2.5 bg-white/10 hover:bg-white/20 rounded-full transition-colors"><X size={20} /></button>
               <div className="flex items-center gap-3 mb-5">
@@ -426,7 +425,7 @@ export default function LogbookPage() {
                 </div>
               </div>
 
-              <div className="p-6 bg-slate-50 rounded-[2rem] border border-slate-100 mb-10">
+              <div className="p-6 bg-slate-50 rounded-4xl border border-slate-100 mb-10">
                 <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-2"><Compass size={12} /> Diver's Log Notes</p>
                 <p className="text-[14px] font-normal leading-relaxed text-slate-600 italic">"{selectedDive.notes}"</p>
               </div>
