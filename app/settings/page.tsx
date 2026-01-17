@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 
 export default function SettingsPage() {
-  // State for toggles with persistence
+  
   const [settings, setSettings] = useState({
     twoFactor: true,
     loginNotifications: true,
@@ -32,16 +32,16 @@ export default function SettingsPage() {
     pushMessages: true,
   });
 
-  // State for dropdowns with persistence
+  
   const [profileVisibility, setProfileVisibility] = useState("Everyone");
   const [logbookVisibility, setLogbookVisibility] = useState("Dive buddies only");
   const [language, setLanguage] = useState("English");
   const [units, setUnits] = useState("Metric");
 
-  // Dropdown UI states
+  
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
-  // Load persistence
+  
   useEffect(() => {
     const savedSettings = localStorage.getItem('bucceo_settings');
     const savedProfileVis = localStorage.getItem('bucceo_profile_vis');
@@ -52,7 +52,7 @@ export default function SettingsPage() {
     if (savedLogbookVis) setLogbookVisibility(savedLogbookVis);
   }, []);
 
-  // Save persistence on change
+  
   const handleToggle = (key: keyof typeof settings) => {
     const newSettings = { ...settings, [key]: !settings[key] };
     setSettings(newSettings);
@@ -109,7 +109,7 @@ export default function SettingsPage() {
         <p className="text-[15px] font-normal text-slate-500 mt-2 tracking-wide">Manage your professional account preferences and security protocols</p>
       </header>
 
-      {/* Safety & Security */}
+ 
       <section className="bg-white border border-slate-100 rounded-[2.5rem] p-10 shadow-sm mb-8 hover:shadow-md transition-shadow">
         <div className="flex items-center gap-3 mb-10">
           <div className="p-2.5 bg-blue-50 rounded-xl">
@@ -150,7 +150,6 @@ export default function SettingsPage() {
         </div>
       </section>
 
-      {/* Privacy */}
       <section className="bg-white border border-slate-100 rounded-[2.5rem] p-10 shadow-sm mb-8">
         <div className="flex items-center gap-3 mb-10">
           <div className="p-2.5 bg-indigo-50 rounded-xl">
@@ -202,7 +201,7 @@ export default function SettingsPage() {
         </div>
       </section>
 
-      {/* Notifications */}
+     
       <section className="bg-white border border-slate-100 rounded-[2.5rem] p-10 shadow-sm mb-8">
         <div className="flex items-center gap-3 mb-10">
           <div className="p-2.5 bg-amber-50 rounded-xl">
@@ -249,7 +248,7 @@ export default function SettingsPage() {
         </div>
       </section>
 
-      {/* Language & Region */}
+      
       <section className="bg-white border border-slate-100 rounded-[2.5rem] p-10 shadow-sm mb-8">
         <div className="flex items-center gap-3 mb-10">
           <div className="p-2.5 bg-cyan-50 rounded-xl">
@@ -275,7 +274,7 @@ export default function SettingsPage() {
         </div>
       </section>
 
-      {/* Account Actions */}
+      
       <div className="space-y-5 mt-16 pb-16 max-w-2xl mx-auto">
         <button className="w-full flex items-center justify-center gap-3 px-8 py-5 bg-white border border-slate-100 rounded-3xl text-[13px] font-bold text-slate-600 hover:bg-slate-50 transition-all active:scale-[0.99] shadow-sm uppercase tracking-widest">
           <LogOut size={18} strokeWidth={1.5} /> Log Out
