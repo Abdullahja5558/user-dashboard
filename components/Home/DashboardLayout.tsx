@@ -18,7 +18,7 @@ const DashboardLayout = () => {
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // Persistence: Load image from localStorage on mount
+  
   useEffect(() => {
     const savedImage = localStorage.getItem('userProfileImage');
     if (savedImage) {
@@ -37,7 +37,7 @@ const DashboardLayout = () => {
       const reader = new FileReader();
       reader.onloadend = () => {
         const base64String = reader.result as string;
-        // Only update preview inside the popup
+        
         setPreviewImage(base64String);
       };
       reader.readAsDataURL(file);
@@ -62,7 +62,7 @@ const DashboardLayout = () => {
     <div className="flex min-h-screen bg-[#F8FAFC]">
       <main className="flex-1 overflow-x-hidden">
         
-        {/* Premium Header Banner */}
+        
         <div className="relative h-72 bg-blue-600 flex items-center overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
             <div className="absolute top-[-10%] right-[-5%] w-96 h-96 bg-white rounded-full blur-3xl"></div>
@@ -71,7 +71,7 @@ const DashboardLayout = () => {
 
           <div className="max-w-5xl mx-auto w-full px-8 relative z-10">
             <div className="flex flex-col md:flex-row items-center md:items-end gap-8">
-              {/* Profile Image with Ring Effect */}
+              
               <div className="relative group">
                 <div className="w-36 h-36 rounded-4xl bg-white p-1.5 shadow-2xl rotate-3 group-hover:rotate-0 transition-transform duration-500">
                   <div className="w-full h-full rounded-[1.7rem] bg-slate-100 flex items-center justify-center overflow-hidden border border-slate-200">
@@ -90,7 +90,7 @@ const DashboardLayout = () => {
                 </button>
               </div>
 
-              {/* Identity Info */}
+          
               <div className="text-white text-center md:text-left pb-2">
                 <h1 className="text-4xl font-extrabold tracking-tight mb-3">Sarah Martinez</h1>
                 <div className="flex items-center gap-3">
@@ -107,7 +107,6 @@ const DashboardLayout = () => {
           </div>
         </div>
 
-        {/* Dashboard Content */}
         <div className="max-w-8xl mx-auto px-8 -mt-10 pb-20 relative z-20">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
             {[
@@ -174,7 +173,7 @@ const DashboardLayout = () => {
         </div>
       </main>
 
-      {/* --- PREMIUM UPDATE PROFILE PICTURE POPUP --- */}
+      
       {isModalOpen && (
         <div className="fixed inset-0 z-100 flex items-center justify-center bg-black/40 backdrop-blur-md p-4 animate-in fade-in duration-300">
           <div className="bg-white w-full max-w-120 rounded-4xl shadow-2xl relative flex flex-col animate-in zoom-in-95 duration-300">
@@ -190,7 +189,7 @@ const DashboardLayout = () => {
               </button>
             </div>
 
-            {/* Content / Drop Zone */}
+            
             <div className="px-8 py-4">
               <div 
                 onClick={() => fileInputRef.current?.click()}
@@ -236,7 +235,7 @@ const DashboardLayout = () => {
               </p>
             </div>
 
-            {/* Footer Actions */}
+            
             <div className="flex items-center justify-end gap-4 p-8 pt-4">
               <button 
                 onClick={handleCloseModal}

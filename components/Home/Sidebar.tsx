@@ -36,7 +36,7 @@ export default function Sidebar() {
 
   const SidebarContent = () => (
     <div className="flex flex-col h-full overflow-hidden">
-      {/* Premium Logo Section */}
+     
       <div className="p-5 bg-blue-900 relative overflow-hidden shrink-0">
         <motion.div 
           initial={{ opacity: 0.5, scale: 0.8 }}
@@ -55,7 +55,7 @@ export default function Sidebar() {
         </div>
       </div>
 
-      {/* Navigation - Spacing tightened to remove scroll */}
+      
       <nav className="flex-1 p-3 space-y-1 overflow-hidden flex flex-col justify-between">
         <div className="space-y-4">
           {menu.map((section) => (
@@ -106,7 +106,7 @@ export default function Sidebar() {
         </div>
       </nav>
 
-      {/* User Footer - Pinned to bottom */}
+     
       <div className="p-3 border-t border-blue-50 bg-white/40 shrink-0">
         <motion.div 
           whileHover={{ backgroundColor: "rgba(255, 255, 255, 0.8)", y: -2 }}
@@ -130,7 +130,7 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* Mobile Menu Button */}
+     
       <div className="lg:hidden fixed top-3 left-3 z-100">
         <motion.button 
           whileTap={{ scale: 0.9 }}
@@ -141,12 +141,12 @@ export default function Sidebar() {
         </motion.button>
       </div>
 
-      {/* Desktop Sidebar */}
+     
       <aside className="hidden lg:flex w-64 bg-[#F8FAFC] border-r border-slate-200 flex-col h-screen sticky top-0 overflow-hidden">
         <SidebarContent />
       </aside>
 
-      {/* Mobile Sidebar Overlay */}
+      
       <AnimatePresence>
         {isOpen && (
           <>
