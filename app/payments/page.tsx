@@ -13,7 +13,7 @@ import {
   Trash2
 } from 'lucide-react';
 
-// --- Types ---
+
 interface Card {
   id: string;
   type: 'Visa' | 'Mastercard' | 'PayPal';
@@ -25,12 +25,12 @@ interface Card {
 }
 
 export default function PaymentMethodsPage() {
-  // --- State ---
+  
   const [cards, setCards] = useState<Card[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
   
-  // Form State
+  
   const [formData, setFormData] = useState({
     cardNumber: '',
     cardholderName: '',
@@ -38,7 +38,7 @@ export default function PaymentMethodsPage() {
     cvv: ''
   });
 
-  // --- Persistence ---
+  
   useEffect(() => {
     const savedCards = localStorage.getItem('user_payment_methods_v2');
     if (savedCards) {
@@ -73,7 +73,7 @@ export default function PaymentMethodsPage() {
     }
   }, [cards, isLoaded]);
 
-  // --- Handlers ---
+
   const handleAddCard = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.cardNumber || !formData.cardholderName || !formData.expiryDate) return;
@@ -103,7 +103,7 @@ export default function PaymentMethodsPage() {
     })));
   };
 
-  // --- Input Formatters ---
+  
   const formatCardNumber = (value: string) => {
     const v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
     const matches = v.match(/\d{4,16}/g);
@@ -125,7 +125,7 @@ export default function PaymentMethodsPage() {
       .replace(/^(0[1-9]|1[0-2])([0-9]{1,2})$/g, '$1/$2');
   };
 
-  // --- UI Components ---
+ 
   const renderCardIcon = (type: string) => {
     if (type === 'Visa') {
       return <div className="w-12 h-8 bg-[#1A1F71] rounded-md flex items-center justify-center text-white text-[10px] font-black italic tracking-tighter shadow-sm">VISA</div>;
@@ -150,7 +150,6 @@ export default function PaymentMethodsPage() {
         <p className="text-[15px] font-normal text-slate-500 mt-1 leading-relaxed">Manage your saved payment methods for faster bookings</p>
       </header>
 
-      {/* Premium Security Banner */}
       <div className="relative overflow-hidden bg-[#F8FAFC] border border-slate-200 rounded-[2.5rem] p-8 mb-10 shadow-sm flex flex-col md:flex-row gap-6 items-start">
         <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-blue-100 shrink-0">
           <ShieldCheck size={26} strokeWidth={1.5} />
@@ -175,7 +174,7 @@ export default function PaymentMethodsPage() {
         </div>
       </div>
 
-      {/* Action Bar */}
+      
       <div className="flex flex-wrap gap-4 mb-8">
         <button 
           onClick={() => setShowAddModal(true)}
@@ -188,7 +187,7 @@ export default function PaymentMethodsPage() {
         </button>
       </div>
 
-      {/* Payment Methods List */}
+     
       <div className="space-y-4 mb-12">
         {cards.map((method) => (
           <div 
@@ -241,7 +240,7 @@ export default function PaymentMethodsPage() {
         ))}
       </div>
 
-      {/* Security Info Footer */}
+      
       <div className="bg-slate-50 border border-slate-100 rounded-[2.5rem] p-8">
         <div className="flex items-center gap-3 mb-6">
           <div className="p-2 bg-white rounded-xl shadow-sm border border-slate-100">
@@ -264,7 +263,7 @@ export default function PaymentMethodsPage() {
         </div>
       </div>
 
-      {/* --- ADD CARD MODAL --- */}
+      
       {showAddModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-in fade-in duration-200">
           <div className="bg-white w-full max-w-105 rounded-4xl shadow-2xl relative overflow-hidden animate-in zoom-in-95 duration-200">
