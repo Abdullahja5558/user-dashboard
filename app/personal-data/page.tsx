@@ -21,7 +21,7 @@ import {
   Filter
 } from 'lucide-react';
 
-// --- Types ---
+
 interface EmergencyContact {
   id: string;
   name: string;
@@ -41,21 +41,21 @@ interface Physician {
 }
 
 export default function PersonalDataPage() {
-  // --- State Management ---
+  
   const [contacts, setContacts] = useState<EmergencyContact[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   
-  // Modals
+  
   const [showAddContact, setShowAddContact] = useState(false);
   const [showEditContact, setShowEditContact] = useState<EmergencyContact | null>(null);
   const [showUploadMedical, setShowUploadMedical] = useState(false);
   const [showPhysicianResults, setShowPhysicianResults] = useState(false);
 
-  // Form States
+  
   const [contactForm, setContactForm] = useState({ name: '', relation: '', phone: '', email: '' });
 
-  // --- Persistence ---
+  
   useEffect(() => {
     const saved = localStorage.getItem('user_emergency_contacts_v1');
     if (saved) {
@@ -73,7 +73,7 @@ export default function PersonalDataPage() {
     if (isLoaded) localStorage.setItem('user_emergency_contacts_v1', JSON.stringify(contacts));
   }, [contacts, isLoaded]);
 
-  // --- Handlers ---
+  
   const handleSaveContact = (e: React.FormEvent) => {
     e.preventDefault();
     const newContact = { ...contactForm, id: Date.now().toString() };
@@ -99,13 +99,13 @@ export default function PersonalDataPage() {
 
   return (
     <div className="p-6 md:p-10 max-w-7xl mx-auto min-h-screen bg-white font-sans antialiased text-slate-900 selection:bg-blue-100">
-      {/* Header */}
+      
       <header className="mb-8">
         <h1 className="text-3xl font-extrabold text-slate-800 tracking-tight">Personal Data</h1>
         <p className="text-[15px] font-medium text-slate-500 mt-1">Manage your health information and emergency contacts</p>
       </header>
 
-      {/* Premium Security Banner */}
+      
       <div className="bg-[#F0F7FF] border border-blue-100 rounded-[2.5rem] p-8 mb-10 shadow-sm flex flex-col md:flex-row gap-6 items-center">
         <div className="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center text-blue-600 shrink-0">
           <ShieldCheck size={28} strokeWidth={2} />
@@ -119,10 +119,10 @@ export default function PersonalDataPage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        {/* Left Column: Health Info */}
+       
         <div className="lg:col-span-7 space-y-6">
-          {/* Blood Type Card */}
-          <div className="bg-white border border-slate-200/60 rounded-4xl p-8 shadow-sm">
+
+           <div className="bg-white border border-slate-200/60 rounded-4xl p-8 shadow-sm">
             <div className="flex justify-between items-center mb-6">
               <div className="flex items-center gap-2">
                 <HeartPulse size={18} className="text-red-500" />
@@ -142,7 +142,7 @@ export default function PersonalDataPage() {
             </div>
           </div>
 
-          {/* Allergies & Conditions (Static for Design) */}
+         
           <div className="bg-white border border-slate-200/60 rounded-4xl p-8 shadow-sm">
             <div className="flex justify-between items-center mb-6">
               <div className="flex items-center gap-2">
@@ -159,7 +159,6 @@ export default function PersonalDataPage() {
           </div>
         </div>
 
-        {/* Right Column: Emergency Contacts */}
         <div className="lg:col-span-5">
           <div className="bg-white border border-slate-200/60 rounded-[2.5rem] p-8 shadow-sm">
             <div className="flex justify-between items-center mb-8">
@@ -199,7 +198,7 @@ export default function PersonalDataPage() {
         </div>
       </div>
 
-      {/* Bottom Section: Medical Documents */}
+      
       <div className="mt-12 bg-white border border-slate-200/60 rounded-[3rem] p-10 shadow-sm">
         <h4 className="text-xl font-extrabold text-slate-800 tracking-tight mb-3">Medical Clearance Documents</h4>
         <p className="text-[14px] text-slate-500 mb-8 max-w-3xl leading-relaxed font-medium">Upload medical clearance forms from your physician if required by your certifying agency or dive operator.</p>
